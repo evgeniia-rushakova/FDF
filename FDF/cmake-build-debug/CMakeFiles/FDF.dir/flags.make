@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/jslave/FDF/libft/includes -I/Users/jslave/FDF/minilib 
+C_INCLUDES = -I/Users/jslave/FDF/libft/includes 
 

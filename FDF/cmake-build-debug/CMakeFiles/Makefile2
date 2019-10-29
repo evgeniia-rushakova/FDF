@@ -35,10 +35,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/0F907FC5-FD37-4568-AE9A-7DFED7364709/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/627424AA-D5AA-408E-B3AC-75A8FE20EC15/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/0F907FC5-FD37-4568-AE9A-7DFED7364709/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/627424AA-D5AA-408E-B3AC-75A8FE20EC15/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -53,12 +53,12 @@ CMAKE_BINARY_DIR = /Users/jslave/FDF/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/FDF.dir/all
+all: CMakeFiles/fdf.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/FDF.dir/clean
+clean: CMakeFiles/fdf.dir/clean
 
 .PHONY : clean
 
@@ -68,31 +68,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/FDF.dir
+# Target rules for target CMakeFiles/fdf.dir
 
 # All Build rule for target.
-CMakeFiles/FDF.dir/all:
-	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/depend
-	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75 "Built target FDF"
-.PHONY : CMakeFiles/FDF.dir/all
+CMakeFiles/fdf.dir/all:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/depend
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67 "Built target fdf"
+.PHONY : CMakeFiles/fdf.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FDF.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/FDF/cmake-build-debug/CMakeFiles 75
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FDF.dir/all
+CMakeFiles/fdf.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/FDF/cmake-build-debug/CMakeFiles 67
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/fdf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/FDF/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/FDF.dir/rule
+.PHONY : CMakeFiles/fdf.dir/rule
 
 # Convenience name for target.
-FDF: CMakeFiles/FDF.dir/rule
+fdf: CMakeFiles/fdf.dir/rule
 
-.PHONY : FDF
+.PHONY : fdf
 
 # clean rule for target.
-CMakeFiles/FDF.dir/clean:
-	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/clean
-.PHONY : CMakeFiles/FDF.dir/clean
+CMakeFiles/fdf.dir/clean:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/clean
+.PHONY : CMakeFiles/fdf.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -22,7 +22,17 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
+typedef struct      s_point
+{
+    void                *win_ptr;
+    void                *img_ptr;
+    void                *mlx_ptr;
+    int                 color;
+    int                 x_coord;
+    int                 y_coord;
+    int                 z_coord;
+    struct  s_point     *next;
+}                   t_point;
 
 
 
@@ -88,6 +98,30 @@ void	make_line(int x_start, int y_start, int x_end, int y_end, void *mlx_ptr, vo
 	}
 }
 
+void    make_web(int col, int row, int width, void *mlx_ptr, void *win_ptr)//бесполезная функция
+{
+    int start_x = 50;
+    int start_y = 50;
+    int i = 0;
+
+    while (row != -1)
+    {
+        while (i != col)
+        {
+            make_line(start_x,start_y,start_x + width,start_y,mlx_ptr,win_ptr,0x4169e1);
+            make_line(start_x,start_y,start_x,start_y + width, mlx_ptr, win_ptr, 0x7b68ee);
+            start_x+=width;
+            make_line(start_x,start_y,start_x,start_y + 50, mlx_ptr, win_ptr, 0x7b68ee);
+             i++;
+        }
+        start_x = 50;
+        start_y+=width;
+        i = 0;
+        row--;
+    }
+
+}
+
 int		main(int ac, char **av)
 {
 	char *line;
@@ -108,18 +142,18 @@ int		main(int ac, char **av)
 		while (get_next_line(fd, &line) == 1)
 			printf("line is: %s\n", line);
 
-		win_ptr = mlx_new_window(mlx_ptr, 500, 500, "little_cat");//создаем новое окно
+		win_ptr = mlx_new_window(mlx_ptr, 800, 800, "little_cat");//создаем новое окно
 		mlx_hook(win_ptr,2, 0, key_press, ((void *)0));//отлавливаем нажатие клавиш
 
-		make_line(50, 50, 150, 50, mlx_ptr, win_ptr, 0x80);
-		make_line(150, 50, 150, 150, mlx_ptr, win_ptr, 0x80);
-		make_line(150, 150, 50, 150, mlx_ptr, win_ptr, 0x80);
-		make_line(50, 150, 50, 50, mlx_ptr, win_ptr, 0x80);
-        mlx_pixel_put(mlx_ptr,win_ptr,50,50,0xffdab9);
-        mlx_pixel_put(mlx_ptr,win_ptr,150,50,0xffdab9);
-        mlx_pixel_put(mlx_ptr,win_ptr,150,150,0xffdab9);
-        mlx_pixel_put(mlx_ptr,win_ptr,50,150,0xffdab9);
-
+		//make_line(50, 50, 150, 50, mlx_ptr, win_ptr, 0x80);
+		//make_line(150, 50, 150, 150, mlx_ptr, win_ptr, 0x80);
+		//make_line(150, 150, 50, 150, mlx_ptr, win_ptr, 0x80);
+		//make_line(50, 150, 50, 50, mlx_ptr, win_ptr, 0x80);
+        //mlx_pixel_put(mlx_ptr,win_ptr,50,50,0xffdab9);
+        //mlx_pixel_put(mlx_ptr,win_ptr,150,50,0xffdab9);
+        //mlx_pixel_put(mlx_ptr,win_ptr,150,150,0xffdab9);
+        //mlx_pixel_put(mlx_ptr,win_ptr,50,150,0xffdab9);
+        make_web(5, 5, 50, mlx_ptr, win_ptr);
 	}
 
 	//mlx_key_hook(win_ptr, deal_key, ((void *)0));
