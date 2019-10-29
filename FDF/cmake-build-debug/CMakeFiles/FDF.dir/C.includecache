@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jslave/FDF/libft/includes/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/Users/jslave/FDF/main.c
+minilib/mlx.h
+/Users/jslave/FDF/minilib/mlx.h
+libft/includes/libft.h
+/Users/jslave/FDF/libft/includes/libft.h
+fcntl.h
+-
+stdio.h
+-
+unistd.h
+-
+
+/Users/jslave/FDF/minilib/mlx.h
+

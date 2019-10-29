@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="FDF" targetName="FDF" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5268cf13-f397-484f-ba5d-896a15700d92" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileColors">
+    <fileColor scope="Tests" color="bbff7e" />
+    <fileColor scope="Local Unit Tests" color="bbff7e" />
+    <fileColor scope="Android Instrumented Tests" color="bbff7e" />
+  </component>
+  <component name="ProjectId" id="1ShMzWVxhZg9myUvquXktQcmC7S" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="FDF" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FDF" TARGET_NAME="FDF" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FDF" RUN_TARGET_NAME="FDF">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5268cf13-f397-484f-ba5d-896a15700d92" name="Default Changelist" comment="" />
+      <created>1572011636643</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572011636643</updated>
+      <workItem from="1572011637945" duration="735000" />
+      <workItem from="1572013157918" duration="6994000" />
+      <workItem from="1572097733449" duration="914000" />
+      <workItem from="1572105265592" duration="2084000" />
+      <workItem from="1572174392887" duration="249000" />
+      <workItem from="1572183196738" duration="7144000" />
+      <workItem from="1572196331327" duration="73000" />
+      <workItem from="1572196412195" duration="50000" />
+      <workItem from="1572196478511" duration="5032000" />
+      <workItem from="1572202501970" duration="2843000" />
+      <workItem from="1572265480868" duration="163000" />
+      <workItem from="1572265663137" duration="2922000" />
+      <workItem from="1572268936083" duration="581000" />
+      <workItem from="1572269520152" duration="1763000" />
+      <workItem from="1572275899503" duration="111000" />
+      <workItem from="1572276011964" duration="2553000" />
+      <workItem from="1572339106262" duration="96000" />
+      <workItem from="1572339257084" duration="86000" />
+      <workItem from="1572339611663" duration="5804000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

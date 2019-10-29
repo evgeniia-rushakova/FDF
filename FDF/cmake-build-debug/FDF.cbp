@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FDF"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/jslave/FDF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/jslave/FDF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/jslave/FDF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FDF">
+				<Option output="/Users/jslave/FDF/cmake-build-debug/FDF" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jslave/FDF/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/jslave/FDF/libft/includes"/>
+					<Add directory="/Users/jslave/FDF/minilib"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 FDF"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FDF/fast">
+				<Option output="/Users/jslave/FDF/cmake-build-debug/FDF" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jslave/FDF/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/jslave/FDF/libft/includes"/>
+					<Add directory="/Users/jslave/FDF/minilib"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 FDF/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jslave/FDF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/jslave/FDF/libft/includes/get_next_line.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/includes/libft.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_atoi.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_bzero.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_count_if.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_foreach.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_isalnum.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_isalpha.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_isascii.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_isdigit.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_isprint.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_itoa.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstadd.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstappendelem.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstdel.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstdellast.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstdelone.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstiter.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstmap.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstnew.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_lstpushelem.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memalloc.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memccpy.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memchr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memcmp.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memcpy.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memdel.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memmove.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_memset.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putchar.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putchar_fd.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putendl.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putendl_fd.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putnbr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putnbr_fd.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putstr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_putstr_fd.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strcat.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strchr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strclr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strcmp.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strcpy.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strdel.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strdup.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strequ.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_striter.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_striteri.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strjoin.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strjoinfree.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strlcat.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strlen.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strmap.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strmapi.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strncat.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strncmp.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strncpy.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strnequ.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strnew.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strnstr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strrchr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strsplit.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strstr.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strsub.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_strtrim.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_tolower.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_toupper.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/get_next_line.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/main.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/font.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_init_loop.m">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_int.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_int_str_to_wordtab.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_new_image.m">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_new_window.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_new_window.m">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_rgb.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_shaders.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/mlx_xpm.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
