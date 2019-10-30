@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="FDF" targetName="FDF" />
+      <config projectName="FDF" targetName="fdf" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -37,6 +37,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunDashboard">
@@ -52,7 +53,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="FDF" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FDF" TARGET_NAME="FDF" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FDF" RUN_TARGET_NAME="FDF">
+    <configuration name="fdf" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="maps/42.fdf" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FDF" TARGET_NAME="fdf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FDF" RUN_TARGET_NAME="fdf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -86,7 +87,20 @@
       <workItem from="1572276011964" duration="2553000" />
       <workItem from="1572339106262" duration="96000" />
       <workItem from="1572339257084" duration="86000" />
-      <workItem from="1572339611663" duration="5804000" />
+      <workItem from="1572339611663" duration="6458000" />
+      <workItem from="1572350403927" duration="2000" />
+      <workItem from="1572350447213" duration="1438000" />
+      <workItem from="1572351932262" duration="180000" />
+      <workItem from="1572352113647" duration="33000" />
+      <workItem from="1572352147401" duration="185000" />
+      <workItem from="1572353404299" duration="32000" />
+      <workItem from="1572353437062" duration="3086000" />
+      <workItem from="1572356666483" duration="28000" />
+      <workItem from="1572356700290" duration="17000" />
+      <workItem from="1572356748274" duration="27000" />
+      <workItem from="1572356778222" duration="3162000" />
+      <workItem from="1572368162620" duration="88000" />
+      <workItem from="1572454565324" duration="5418000" />
     </task>
     <servers />
   </component>

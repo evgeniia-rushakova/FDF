@@ -18,7 +18,7 @@ INCLUDES = libft/includes
 
 MLX_LIB_INCLUDES = minilib
 
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Wextra -Werror -g
 
 FLAGS_GRAPHIC = -framework OpenGL -framework Appkit
 

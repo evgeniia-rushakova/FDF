@@ -119,7 +119,40 @@ void    make_web(int col, int row, int width, void *mlx_ptr, void *win_ptr)//б�
         i = 0;
         row--;
     }
+}
 
+int    rotate_x(int keycode, t_point *param)
+{
+    if (keycode == 124)
+    {
+        make_line(param->x_coord,param->y_coord,param->next->x_coord, param->next->y_coord,param->mlx_ptr,param->win_ptr, 0xffff00);
+        printf("old: %d  ", param->x_coord);
+        param = param->next;
+        printf("new: %d  \n", param->x_coord);
+    }
+    return (0);
+}
+
+t_point *make_list_of_points(t_point *start, void *win_ptr, void *mlx_ptr, int quan_of_points)//по такому принципу создать кусочек списка для каждой точки
+{
+    t_point *copy;
+    copy = start;
+    int start_x = 50;
+    int start_y = 50;
+    while (quan_of_points > 0)
+    {
+        copy->win_ptr = win_ptr;
+        copy->mlx_ptr = mlx_ptr;
+        copy->x_coord = start_x;
+        copy->y_coord = start_y;
+        start_x+=50;
+        start_y+=50;
+        if(quan_of_points - 1 != 0)
+            copy->next = ft_memalloc(sizeof(t_point));
+        copy = copy->next;
+        quan_of_points--;
+    }
+    return (start);
 }
 
 int		main(int ac, char **av)
@@ -134,26 +167,29 @@ int		main(int ac, char **av)
 	//void	*img_ptr;
 	//char	*data_ptr;
 
+	t_point *start = ft_memalloc(sizeof(t_point));
 	mlx_ptr = mlx_init();//инициализируем
 
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		while (get_next_line(fd, &line) == 1)
-			printf("line is: %s\n", line);
+		/*while (get_next_line(fd, &line) == 1)
+			printf("line is: %s\n", line);*/
 
 		win_ptr = mlx_new_window(mlx_ptr, 800, 800, "little_cat");//создаем новое окно
-		mlx_hook(win_ptr,2, 0, key_press, ((void *)0));//отлавливаем нажатие клавиш
+        mlx_hook(win_ptr,2, 0, key_press, ((void *)0));//отлавливаем нажатие клавиш esc
 
-		//make_line(50, 50, 150, 50, mlx_ptr, win_ptr, 0x80);
-		//make_line(150, 50, 150, 150, mlx_ptr, win_ptr, 0x80);
-		//make_line(150, 150, 50, 150, mlx_ptr, win_ptr, 0x80);
-		//make_line(50, 150, 50, 50, mlx_ptr, win_ptr, 0x80);
-        //mlx_pixel_put(mlx_ptr,win_ptr,50,50,0xffdab9);
-        //mlx_pixel_put(mlx_ptr,win_ptr,150,50,0xffdab9);
-        //mlx_pixel_put(mlx_ptr,win_ptr,150,150,0xffdab9);
-        //mlx_pixel_put(mlx_ptr,win_ptr,50,150,0xffdab9);
-        make_web(5, 5, 50, mlx_ptr, win_ptr);
+       make_line(400, 400,400, 200, mlx_ptr, win_ptr, 0x8b0a50 );
+       make_line(400, 400, 328, 328,mlx_ptr,win_ptr, 0xff3e96);
+
+       make_list_of_points(start, win_ptr, mlx_ptr,6);
+       mlx_hook(win_ptr,3,0, rotate_x, start);//отлавливаем нажатие клавиши вбок
+       /* while(start->next)
+        {
+            make_line(start->x_coord,start->y_coord,start->next->x_coord,start->next->y_coord,start->mlx_ptr,start->win_ptr, 0xcd1076);
+            start = start->next;
+        }*/
+       //make_web(5, 5, 50, mlx_ptr, win_ptr);
 	}
 
 	//mlx_key_hook(win_ptr, deal_key, ((void *)0));
@@ -162,6 +198,7 @@ int		main(int ac, char **av)
 	//img_ptr = mlx_new_image(mlx_ptr, 100, 100);
 	//data_ptr = mlx_get_data_addr(img_ptr, bits, size_line, endian);
 	//printf("data_ptr is: %s\n", data_ptr);
+
 	mlx_loop(mlx_ptr);//без него ничего не работает
 
 	return (0);
