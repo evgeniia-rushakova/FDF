@@ -30,38 +30,32 @@ typedef struct          s_fdf
     void                *img_ptr;
     int                 *img_data;
     char                dimension;
+    int                 **array;
     int                 step;
     int                 bpp;
     int                 endian;
     int                 size_line;
+    int                 x_start;
+    int                 y_start;
+    int                 **colors;
+    double              x_rotate;
+    double              y_rotate;
+    double              z_rotate;
 }                       t_fdf;
 
-int key_press(int keycode, void *param)//закрывает окошко пр  нажатии клавиши еск.Возможно нужно переделать
+void  erace_img(t_fdf *fdf)
 {
-    if(!param && keycode == 53)
-        exit(0);
-    return (0);
+    int i;
+
+    i = 0;
+    while(i != 1000000-1)
+    {
+        (fdf->img_data)[i] = 0x000000;
+
+        i++;
+    }
+    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr, 0, 0);
 }
-
-static void iso(int *x, int *y, int z)
-{
-
-
-    if (z == 30)
-        printf("HEIGHT\n");
-    int previous_x;
-    int previous_y;
-
-    previous_x = *x;
-    previous_y = *y;
-  //  printf("previous_x: %d  ", previous_x);
- //   printf("previous_y: %d\n", previous_y);
-    *x = abs(previous_x - previous_y) * cos(0.523599);
-    *y = -z + (previous_x + previous_y) * sin(0.523599);
-   // printf("new x is: %d  ", *x);
-   // printf("new y is: %d\n", *y);
-}
-
 
 void make_line(int x_start, int y_start, int x_end, int y_end, int *img_data, int color)
 {
@@ -132,105 +126,171 @@ void make_line(int x_start, int y_start, int x_end, int y_end, int *img_data, in
     }
 }
 
+
+
+static void x_rotate(int *y, int *z, t_fdf *fdf)//num0
+{
+    int previous_y;
+    int previous_z;
+
+    previous_z = *z;
+    previous_y = *y;
+    *y = previous_y * cos(fdf->x_rotate) + previous_y * sin(fdf->x_rotate);
+    *z = -previous_z * sin(fdf->x_rotate) + previous_z * cos(fdf->x_rotate);
+
+   fdf->x_rotate += (0.0001);
+}
+
+static void y_rotate(int *x,int *z, t_fdf *fdf)
+{
+    int     previous_x;
+    int     previous_z;
+
+    previous_x = *x;
+    previous_z = *z;
+    *x = previous_x * cos(fdf->y_rotate) - previous_x * sin(fdf->y_rotate);
+    *z = previous_z * sin(fdf->y_rotate) + previous_z * cos(fdf->y_rotate);
+    fdf->y_rotate+=(0.00001);
+}
+
+static void z_rotate(int *x, int *y, t_fdf *fdf)
+{
+    int previous_x;
+    int previous_y;
+
+    previous_x = *x;
+    previous_y = *y;
+    *x = previous_x * cos(fdf->z_rotate) + previous_x * sin(fdf->z_rotate);
+    *y = -previous_y * sin(fdf->z_rotate) + previous_y * cos(fdf->z_rotate);
+    fdf->z_rotate+=(0.00001);
+}
+/*
+static void iso(int *x, int *y, int z)
+{
+    int previous_x;
+    int previous_y;
+
+    previous_x = *x;
+    previous_y = *y;
+    *x = (previous_x - previous_y) * cos(0.523599);
+    *y = -z + (previous_x + previous_y) * sin(0.523599);
+}
+*/
 void    make_horizontal_line(t_fdf *fdf, int x_start, int y_start, int z, int next_z)
 {
     int y_end;
     int x_end;
-    int iso_x;
-    int iso_y;
+    int rotate_x;
+    int rotate_y;
+    int rotate_z;
+    int rotate_z_next;
 
     y_end = y_start;
     x_end =x_start + fdf->step;
-    iso_x = x_start;
-    iso_y = y_start;
+    rotate_x = x_start;
+    rotate_y = y_start;
+    rotate_z = z;
+    rotate_z_next = next_z;
 
-    iso(&x_end, &y_end, next_z);
-    iso(&iso_x, &iso_y, z);
-    make_line(iso_x,iso_y,x_end,y_end,fdf->img_data,0x9b30ff);
+    if (fdf->dimension == 'x')
+    {
+        x_rotate(&y_end, &rotate_z_next, fdf);
+        x_rotate(&rotate_y, &rotate_z,fdf);
+    }
+    else if (fdf->dimension == 'y')
+    {
+        y_rotate(&x_end, &rotate_z_next, fdf);
+        y_rotate(&rotate_x, &rotate_z, fdf);
+    }
+    else if (fdf->dimension == 'z')
+    {
+        z_rotate(&x_end, &y_end, fdf);
+        z_rotate(&rotate_x, &rotate_y, fdf);
+    }
+   // iso(&x_end, &y_end, rotate_z_next);
+  // iso(&rotate_x, &rotate_y, rotate_z);
+
+    make_line(rotate_x, rotate_y, x_end,y_end, fdf->img_data,0x9b30ff);
 }
 
 void    make_vertical_line(t_fdf *fdf, int x_start, int y_start, int z, int next_z)
 {
     int y_end;
     int x_end;
-    int iso_x;
-    int iso_y;
+    int rotate_x;
+    int rotate_y;
+    int rotate_z;
+    int rotate_z_next;
 
-    y_end = y_start  + fdf->step;
+    y_end = y_start + fdf->step;
     x_end =x_start;
-    iso_x = x_start;
-    iso_y = y_start;
+    rotate_x = x_start;
+    rotate_y = y_start;
+    rotate_z = z;
+    rotate_z_next = next_z;
 
-    iso(&x_end, &y_end, next_z);
-    iso(&iso_x, &iso_y, z);
-    make_line(iso_x,iso_y,x_end,y_end,fdf->img_data,0xff7f);
+    if (fdf->dimension == 'x')
+    {
+        x_rotate(&y_end, &rotate_z_next, fdf);
+        x_rotate(&rotate_y, &rotate_z,fdf);
+    }
+    else if (fdf->dimension == 'y')
+    {
+        y_rotate(&x_end, &rotate_z_next, fdf);
+        y_rotate(&rotate_x, &rotate_z, fdf);
+    }
+    else if (fdf->dimension == 'z')
+    {
+        z_rotate(&x_end, &y_end, fdf);
+        z_rotate(&rotate_x, &rotate_y, fdf);
+    }
+    //iso(&x_end, &y_end, rotate_z_next);
+   // iso(&rotate_x, &rotate_y, rotate_z);
+    make_line(rotate_x, rotate_y, x_end, y_end, fdf->img_data,0xff7f);
 }
 
-void    print_arr(int **sqrt, int size)//delete
+void    print_2d_arr(int  **arr, int cols, int rows)
 {
-    int		i;
-    int		j;
+    int i;
+    int j;
 
     i = 0;
-    while (i < size)
+    while (i < cols)
     {
         j = 0;
-        while (j < size)
+        while (j < rows)
         {
-            printf("%i  ", sqrt[i][j]);
+            printf("%i ", arr[i][j]);
             j++;
         }
+        i++;
         printf("\n");
-        i++;
     }
 }
 
-int	    **make_2d_arr(int size)//delete or move to the lib
+
+/*
+void    draw_all(t_fdf *fdf, int cols, int rows)
 {
-    int	**sqrt;
+    int x_start = fdf->x_start;
+    int y_start = fdf->y_start;
     int		i;
     int		j;
-
-    i = 0;
-    if (!(sqrt = (int **)ft_memalloc(sizeof(int *) * (size_t)size + 1)))
-        return (NULL);
-    while (i < size)
-    {
-        j = 0;
-        if (!(sqrt[i] = (int *)ft_memalloc(sizeof(int) * (size_t)size + 1)))
-            return (NULL);
-        while (j < size)
-        {
-            sqrt[i][j] = 0;
-            j++;
-        }
-        i++;
-    }
-    sqrt[i] = NULL;
-    return (sqrt);
-}
-
-void    draw_all(t_fdf *fdf, int **ex, int size)
-{
-    int x_start = 600;
-    int y_start = 100;
-    int		i;
-    int		j;
-    int x_temp;
+    int     x_temp;
     x_temp = x_start;
 
     i = 0;
 
-    while (i < size)
+    while (i < cols)
     {
         j = 0;
-        while (j < size && (i + 1 < size) && (j + 1) < size)
+        while (j < rows && (i + 1 < rows) && (j + 1) < rows)
         {
-            make_horizontal_line(fdf,x_start,y_start,ex[i][j], ex[i][j+ 1]);//violet
-            make_vertical_line(fdf, x_start, y_start, ex[i][j], ex[i + 1][j]);//green
+            make_horizontal_line(fdf,x_start,y_start,fdf->array[i][j], fdf->array[i][j+ 1]);//violet
+            make_vertical_line(fdf, x_start, y_start, fdf->array[i][j], fdf->array[i + 1][j]);//green
             j++;
             x_start+=fdf->step;
-            make_vertical_line(fdf, x_start, y_start, ex[i][j], ex[i + 1][j]);//green
+           make_vertical_line(fdf, x_start, y_start, fdf->array[i][j], fdf->array[i + 1][j]);//green
         }
        x_start = x_temp;
        y_start+=fdf->step;
@@ -239,52 +299,215 @@ void    draw_all(t_fdf *fdf, int **ex, int size)
     j = 0;
     i--;
     y_start-=fdf->step;
-    while (j+1 < size)
+   while (j+1 < rows)
     {
-        make_horizontal_line(fdf,x_start,y_start,ex[i][j], ex[i][j+1]);//violet
+        make_horizontal_line(fdf,x_start,y_start,fdf->array[i][j], fdf->array[i][j+1]);//violet
         j++;
         x_start+=fdf->step;
     }
+    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
+}*/
+int     **create_2d_int_arr(int cols, int rows)
+{
+    int **result;
+    int i;
+    int j;
+    i = 0;
+    if (!(result = (int **)ft_memalloc(sizeof(int *) * (size_t)cols + 1)))
+        return (NULL);
+    while (i < cols)
+    {
+        j = 0;
+        if (!(result[i] = (int *)ft_memalloc(sizeof(int) * (size_t)rows + 1)))
+            return (NULL);
+        while (j < rows)
+        {
+            result[i][j] = 0;
+            j++;
+        }
+        i++;
+    }
+    result[i] = NULL;
+    return (result);
+}
+/*
+void       draw_all2(t_fdf *fdf, int cols, int rows)
+{
+    int x_start = fdf->x_start;
+    int y_start = fdf->y_start;
+    int i;
+    int j;
 
+    i = 0;
+    j = 0;
+    while (i < cols)//i < cols +1
+    {
+        printf("!\n");
+        j = 0;
+        while (j < rows)//j <= rows
+        {
+            if (j - 1 < rows)//j - 1 < rows
+                printf("(m) z is: %i\n", fdf->array[i][j]);
+            if (j + 1 < rows)//j + 1 <= rows
+            {
+                //printf("(v) z-> is: %i\n", fdf->array[i][j]);
+                make_horizontal_line(fdf,x_start, y_start, fdf->array[i][j],fdf->array[i][j + 1]);
+                //make_line(x_start,y_start,x_start+fdf->step,y_start,fdf->img_data, 0xdda0dd);
+            }
+            if (i + 1 < cols)//i + 1 <= cols
+            {
+                //printf("(h) z-> is: %i\n", fdf->array[i + 1][j]);
+                make_vertical_line(fdf,x_start,y_start,fdf->array[i][j],fdf->array[i + 1][j]);
+                //make_line(x_start,y_start,x_start,y_start+fdf->step,fdf->img_data, 0xff4500);
+            }
+            x_start+=fdf->step;
+            j++;
+        }
+        x_start = fdf->x_start;
+        y_start+=fdf->step;
+        i++;
+    }
+    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
+}
+*/
+void       draw_all2(t_fdf *fdf, int cols, int rows)
+{
+    int x_start = fdf->x_start;
+    int y_start = fdf->y_start;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (i < cols)
+    {
+        j = 0;
+        while (j < rows)
+        {
+                make_line(x_start,y_start,x_start+fdf->step,y_start,fdf->img_data, 0xdda0dd);
+
+              make_line(x_start,y_start,x_start,y_start+fdf->step,fdf->img_data, 0xff4500);
+
+
+            x_start+=fdf->step;
+            j++;
+        }
+        x_start = fdf->x_start;
+        y_start+=fdf->step;
+        i++;
+    }
+    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
 }
 
-int		main(int ac, char **av)
+void    create_fdf_data(t_fdf *fdf, int step, int width, int height)
 {
-    void    *mlx_ptr;
     void    *win_ptr;
     int     *img_data;
     void    *img_ptr;
-    t_fdf   *fdf_main;
-    int fd;
 
-    int **test_arr = make_2d_arr(8);
+    fdf->step =step;
+    win_ptr = mlx_new_window(fdf->mlx_ptr, width, height, "little_cat");//создаем новое окно
+    fdf->win_ptr = win_ptr;
+    img_ptr = mlx_new_image(fdf->mlx_ptr,width, height);
+    fdf->img_ptr = img_ptr;
+    img_data = (int *)mlx_get_data_addr(img_ptr, &(fdf->bpp), &(fdf->size_line), &(fdf->endian));
+    fdf->img_data = img_data;
+    fdf->x_start = 500;
+    fdf->y_start = 200;
+}
 
-    test_arr[3][3] = 80;
-    test_arr[3][4] = 80;
-    test_arr[4][3] = 80;
-    test_arr[4][4] = 80;
-
-    print_arr(test_arr,8);
-    if (ac == 2)
+int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  нажатии клавиши еск.Возможно нужно переделать
+{
+    fdf->colors=0;
+    if(keycode == 53)//esc
     {
-        fdf_main = ft_memalloc(sizeof(t_fdf));
-        fdf_main->step = 30;
-        mlx_ptr = mlx_init();//инициализируем
-        fdf_main->mlx_ptr = mlx_ptr;
-        char *line;
-        fd = open(av[1], O_RDONLY);
-        while (get_next_line(fd, &line) == 1)
-            printf("line is: %s\n", line);
-        win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "little_cat");//создаем новое окно
-        fdf_main->win_ptr = win_ptr;
-        mlx_hook(win_ptr,2, 0, key_press, ((void *)0));//отлавливаем нажатие клавиш esc
-        img_ptr = mlx_new_image(mlx_ptr,1000,1000);
-        fdf_main->img_ptr = img_ptr;
-        img_data = (int *)mlx_get_data_addr(img_ptr, &(fdf_main->bpp), &(fdf_main->size_line), &(fdf_main->endian));
-        fdf_main->img_data = img_data;
-        draw_all(fdf_main, test_arr, 8);
-        mlx_put_image_to_window(mlx_ptr,win_ptr,img_ptr,0,0);
-        mlx_loop(mlx_ptr);
+     //   printf(" esc! ");
+        exit(0);
     }
+/*
+    if(keycode == 124)//стрелка вправо
+    {
+     //   printf(" right! ");
+        erace_img(fdf);
+        fdf->x_start+=10;
+        draw_all(fdf, 4,4);
+    }
+    if(keycode == 126)//стрелка вниз
+    {
+     //   printf(" down! ");
+        erace_img(fdf);
+        fdf->y_start+=10;
+        draw_all(fdf, 4,4);
+    }
+    if(keycode == 123)//стрелка влево
+    {
+      //  printf(" left! ");
+        erace_img(fdf);
+        fdf->x_start-=10;
+        draw_all(fdf, 4,4);
+    }
+    if(keycode == 125)//стрелка вверх
+    {
+      //  printf(" up! ");
+        erace_img(fdf);
+        fdf->y_start-=10;
+        draw_all(fdf, 4,4);
+    }
+    if (keycode == 88)//num6  для поворота по Х
+    {
+     //   printf(" x_d! ");
+        erace_img(fdf);
+        fdf->dimension = 'x';
+        draw_all(fdf, 4,4);
+       fdf->dimension = 'i';
+    }
+    if (keycode == 91)//num2  для поворота по У
+    {
+     //   printf(" y_d! ");
+        erace_img(fdf);
+        fdf->dimension = 'y';
+        draw_all(fdf, 4,4);
+        fdf->dimension = 'i';
+    }
+    if (keycode == 87)//num5  для поворота по Z
+    {
+       // printf(" z_d! ");
+        erace_img(fdf);
+        fdf->dimension = 'z';
+        draw_all(fdf, 4,4);
+        fdf->dimension = 'i';
+    }*/
+    return (0);
+}
+
+int		main()
+{
+    void    *mlx_ptr;
+    t_fdf   *fdf;
+
+   // if (ac == 2)
+   // {
+        fdf = ft_memalloc(sizeof(t_fdf));
+        mlx_ptr = mlx_init();//инициализируем
+        fdf->mlx_ptr = mlx_ptr;
+        int    **test_arr2 = create_2d_int_arr(6, 4);
+
+        //test_arr2[2][2] = 80;
+        //test_arr2[2][3] = 50;
+        test_arr2[1][1] = 80;
+        test_arr2[1][2] = 80;
+    //test_arr2[2][1] = 80;
+
+
+
+        print_2d_arr(test_arr2, 6,4);
+        fdf->array = test_arr2;
+        create_fdf_data(fdf,50,1000,1000);
+        //draw_all(fdf, 4,4);
+        draw_all2(fdf, 6,4);
+        mlx_hook(fdf->win_ptr,2, 0, key_press, fdf);//отлавливаем нажатие клавиш
+        mlx_loop(fdf->mlx_ptr);
+  //  }
+    //почистить фдф и массив
     return (0);
 }
