@@ -43,7 +43,7 @@ typedef struct          s_fdf
     double              z_rotate;
 }                       t_fdf;
 
-void  erace_img(t_fdf *fdf)
+void  erase_img(t_fdf *fdf)
 {
     int i;
 
@@ -135,10 +135,10 @@ static void x_rotate(int *y, int *z, t_fdf *fdf)//num0
 
     previous_z = *z;
     previous_y = *y;
-    *y = previous_y * cos(fdf->x_rotate) + previous_y * sin(fdf->x_rotate);
-    *z = -previous_z * sin(fdf->x_rotate) + previous_z * cos(fdf->x_rotate);
+    *y = previous_y * cos(fdf->x_rotate) + previous_z * sin(fdf->x_rotate);
+    *z = -previous_y * sin(fdf->x_rotate) + previous_z * cos(fdf->x_rotate);
 
-   fdf->x_rotate += (0.0001);
+   fdf->x_rotate += (0.001);
 }
 
 static void y_rotate(int *x,int *z, t_fdf *fdf)
@@ -148,9 +148,9 @@ static void y_rotate(int *x,int *z, t_fdf *fdf)
 
     previous_x = *x;
     previous_z = *z;
-    *x = previous_x * cos(fdf->y_rotate) - previous_x * sin(fdf->y_rotate);
-    *z = previous_z * sin(fdf->y_rotate) + previous_z * cos(fdf->y_rotate);
-    fdf->y_rotate+=(0.00001);
+    *x = previous_x * cos(fdf->y_rotate) + previous_z * sin(fdf->y_rotate);
+    *z = -previous_x * sin(fdf->y_rotate) + previous_z * cos(fdf->y_rotate);
+    fdf->y_rotate+=(0.001);
 }
 
 static void z_rotate(int *x, int *y, t_fdf *fdf)
@@ -160,11 +160,11 @@ static void z_rotate(int *x, int *y, t_fdf *fdf)
 
     previous_x = *x;
     previous_y = *y;
-    *x = previous_x * cos(fdf->z_rotate) + previous_x * sin(fdf->z_rotate);
-    *y = -previous_y * sin(fdf->z_rotate) + previous_y * cos(fdf->z_rotate);
-    fdf->z_rotate+=(0.00001);
+    *x = previous_x * cos(fdf->z_rotate) - previous_y * sin(fdf->z_rotate);
+    *y = previous_y * sin(fdf->z_rotate) + previous_y * cos(fdf->z_rotate);
+    fdf->z_rotate+=(0.001);
 }
-/*
+
 static void iso(int *x, int *y, int z)
 {
     int previous_x;
@@ -175,7 +175,7 @@ static void iso(int *x, int *y, int z)
     *x = (previous_x - previous_y) * cos(0.523599);
     *y = -z + (previous_x + previous_y) * sin(0.523599);
 }
-*/
+
 void    make_horizontal_line(t_fdf *fdf, int x_start, int y_start, int z, int next_z)
 {
     int y_end;
@@ -207,8 +207,8 @@ void    make_horizontal_line(t_fdf *fdf, int x_start, int y_start, int z, int ne
         z_rotate(&x_end, &y_end, fdf);
         z_rotate(&rotate_x, &rotate_y, fdf);
     }
-   // iso(&x_end, &y_end, rotate_z_next);
-  // iso(&rotate_x, &rotate_y, rotate_z);
+ iso(&x_end, &y_end, rotate_z_next);
+  iso(&rotate_x, &rotate_y, rotate_z);
 
     make_line(rotate_x, rotate_y, x_end,y_end, fdf->img_data,0x9b30ff);
 }
@@ -225,7 +225,7 @@ void    make_vertical_line(t_fdf *fdf, int x_start, int y_start, int z, int next
     y_end = y_start + fdf->step;
     x_end =x_start;
     rotate_x = x_start;
-    rotate_y = y_start;
+   rotate_y = y_start;
     rotate_z = z;
     rotate_z_next = next_z;
 
@@ -244,8 +244,8 @@ void    make_vertical_line(t_fdf *fdf, int x_start, int y_start, int z, int next
         z_rotate(&x_end, &y_end, fdf);
         z_rotate(&rotate_x, &rotate_y, fdf);
     }
-    //iso(&x_end, &y_end, rotate_z_next);
-   // iso(&rotate_x, &rotate_y, rotate_z);
+   iso(&x_end, &y_end, rotate_z_next);
+  iso(&rotate_x, &rotate_y, rotate_z);
     make_line(rotate_x, rotate_y, x_end, y_end, fdf->img_data,0xff7f);
 }
 
@@ -255,10 +255,10 @@ void    print_2d_arr(int  **arr, int cols, int rows)
     int j;
 
     i = 0;
-    while (i < cols)
+    while (i <rows)
     {
         j = 0;
-        while (j < rows)
+        while (j < cols)
         {
             printf("%i ", arr[i][j]);
             j++;
@@ -268,57 +268,18 @@ void    print_2d_arr(int  **arr, int cols, int rows)
     }
 }
 
-
-/*
-void    draw_all(t_fdf *fdf, int cols, int rows)
-{
-    int x_start = fdf->x_start;
-    int y_start = fdf->y_start;
-    int		i;
-    int		j;
-    int     x_temp;
-    x_temp = x_start;
-
-    i = 0;
-
-    while (i < cols)
-    {
-        j = 0;
-        while (j < rows && (i + 1 < rows) && (j + 1) < rows)
-        {
-            make_horizontal_line(fdf,x_start,y_start,fdf->array[i][j], fdf->array[i][j+ 1]);//violet
-            make_vertical_line(fdf, x_start, y_start, fdf->array[i][j], fdf->array[i + 1][j]);//green
-            j++;
-            x_start+=fdf->step;
-           make_vertical_line(fdf, x_start, y_start, fdf->array[i][j], fdf->array[i + 1][j]);//green
-        }
-       x_start = x_temp;
-       y_start+=fdf->step;
-       i++;
-    }
-    j = 0;
-    i--;
-    y_start-=fdf->step;
-   while (j+1 < rows)
-    {
-        make_horizontal_line(fdf,x_start,y_start,fdf->array[i][j], fdf->array[i][j+1]);//violet
-        j++;
-        x_start+=fdf->step;
-    }
-    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
-}*/
 int     **create_2d_int_arr(int cols, int rows)
 {
     int **result;
     int i;
     int j;
     i = 0;
-    if (!(result = (int **)ft_memalloc(sizeof(int *) * (size_t)cols + 1)))
+    if (!(result = (int **)ft_memalloc(sizeof(int *) * (size_t)rows + 1)))
         return (NULL);
     while (i < cols)
     {
         j = 0;
-        if (!(result[i] = (int *)ft_memalloc(sizeof(int) * (size_t)rows + 1)))
+        if (!(result[i] = (int *)ft_memalloc(sizeof(int) * (size_t)cols + 1)))
             return (NULL);
         while (j < rows)
         {
@@ -330,71 +291,30 @@ int     **create_2d_int_arr(int cols, int rows)
     result[i] = NULL;
     return (result);
 }
-/*
-void       draw_all2(t_fdf *fdf, int cols, int rows)
+
+void       draw_all(t_fdf *fdf, int cols, int rows)
 {
     int x_start = fdf->x_start;
     int y_start = fdf->y_start;
-    int i;
-    int j;
+    int x;
+    int y;
 
-    i = 0;
-    j = 0;
-    while (i < cols)//i < cols +1
+    y = 0;
+    while (y < cols)//y <= cols
     {
-        printf("!\n");
-        j = 0;
-        while (j < rows)//j <= rows
+        x = 0;
+        while (x < rows)//x <= rows
         {
-            if (j - 1 < rows)//j - 1 < rows
-                printf("(m) z is: %i\n", fdf->array[i][j]);
-            if (j + 1 < rows)//j + 1 <= rows
-            {
-                //printf("(v) z-> is: %i\n", fdf->array[i][j]);
-                make_horizontal_line(fdf,x_start, y_start, fdf->array[i][j],fdf->array[i][j + 1]);
-                //make_line(x_start,y_start,x_start+fdf->step,y_start,fdf->img_data, 0xdda0dd);
-            }
-            if (i + 1 < cols)//i + 1 <= cols
-            {
-                //printf("(h) z-> is: %i\n", fdf->array[i + 1][j]);
-                make_vertical_line(fdf,x_start,y_start,fdf->array[i][j],fdf->array[i + 1][j]);
-                //make_line(x_start,y_start,x_start,y_start+fdf->step,fdf->img_data, 0xff4500);
-            }
+            if (x + 1 < rows)
+              make_horizontal_line(fdf,x_start, y_start, fdf->array[y][x],fdf->array[y][x + 1]);
+           if (y + 1 < cols)
+               make_vertical_line(fdf,x_start,y_start,fdf->array[y][x],fdf->array[y + 1][x]);
             x_start+=fdf->step;
-            j++;
+            x++;
         }
         x_start = fdf->x_start;
         y_start+=fdf->step;
-        i++;
-    }
-    mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
-}
-*/
-void       draw_all2(t_fdf *fdf, int cols, int rows)
-{
-    int x_start = fdf->x_start;
-    int y_start = fdf->y_start;
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-    while (i < cols)
-    {
-        j = 0;
-        while (j < rows)
-        {
-                make_line(x_start,y_start,x_start+fdf->step,y_start,fdf->img_data, 0xdda0dd);
-
-              make_line(x_start,y_start,x_start,y_start+fdf->step,fdf->img_data, 0xff4500);
-
-
-            x_start+=fdf->step;
-            j++;
-        }
-        x_start = fdf->x_start;
-        y_start+=fdf->step;
-        i++;
+        y++;
     }
     mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
 }
@@ -421,42 +341,40 @@ int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  н
     fdf->colors=0;
     if(keycode == 53)//esc
     {
-     //   printf(" esc! ");
         exit(0);
     }
-/*
     if(keycode == 124)//стрелка вправо
     {
      //   printf(" right! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->x_start+=10;
         draw_all(fdf, 4,4);
     }
     if(keycode == 126)//стрелка вниз
     {
      //   printf(" down! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->y_start+=10;
         draw_all(fdf, 4,4);
     }
     if(keycode == 123)//стрелка влево
     {
       //  printf(" left! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->x_start-=10;
         draw_all(fdf, 4,4);
     }
     if(keycode == 125)//стрелка вверх
     {
       //  printf(" up! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->y_start-=10;
         draw_all(fdf, 4,4);
     }
     if (keycode == 88)//num6  для поворота по Х
     {
      //   printf(" x_d! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->dimension = 'x';
         draw_all(fdf, 4,4);
        fdf->dimension = 'i';
@@ -464,7 +382,7 @@ int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  н
     if (keycode == 91)//num2  для поворота по У
     {
      //   printf(" y_d! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->dimension = 'y';
         draw_all(fdf, 4,4);
         fdf->dimension = 'i';
@@ -472,11 +390,11 @@ int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  н
     if (keycode == 87)//num5  для поворота по Z
     {
        // printf(" z_d! ");
-        erace_img(fdf);
+        erase_img(fdf);
         fdf->dimension = 'z';
         draw_all(fdf, 4,4);
         fdf->dimension = 'i';
-    }*/
+    }
     return (0);
 }
 
@@ -490,21 +408,20 @@ int		main()
         fdf = ft_memalloc(sizeof(t_fdf));
         mlx_ptr = mlx_init();//инициализируем
         fdf->mlx_ptr = mlx_ptr;
-        int    **test_arr2 = create_2d_int_arr(6, 4);
+        int    **test_arr2 = create_2d_int_arr(4, 4);
 
-        //test_arr2[2][2] = 80;
-        //test_arr2[2][3] = 50;
-        test_arr2[1][1] = 80;
-        test_arr2[1][2] = 80;
-    //test_arr2[2][1] = 80;
+    //test_arr2[2][2] = 80;
+    //test_arr2[2][3] = 80;
+    //test_arr2[1][1] = 80;
+    test_arr2[1][2] = 80;
+    test_arr2[2][1] = 80;
 
 
 
-        print_2d_arr(test_arr2, 6,4);
+        print_2d_arr(test_arr2, 4,4);
         fdf->array = test_arr2;
-        create_fdf_data(fdf,50,1000,1000);
-        //draw_all(fdf, 4,4);
-        draw_all2(fdf, 6,4);
+        create_fdf_data(fdf,10,1000,1000);
+        draw_all(fdf, 4,4);
         mlx_hook(fdf->win_ptr,2, 0, key_press, fdf);//отлавливаем нажатие клавиш
         mlx_loop(fdf->mlx_ptr);
   //  }
