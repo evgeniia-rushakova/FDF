@@ -76,7 +76,7 @@ int						get_next_line(int fd, char **line)
 {
 	int				res;
 	char			buf[BUFF_SIZE + 1];
-	t_list static	*startsave;
+    static t_list 	*startsave;
 	t_list			*save;
 	size_t			lenofsave;
 

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jslave/FDF/libft/srcs/ft_atoi.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_atoi.c.o"
+  "/Users/jslave/FDF/libft/srcs/ft_atoi_base.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o"
   "/Users/jslave/FDF/libft/srcs/ft_bzero.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_bzero.c.o"
   "/Users/jslave/FDF/libft/srcs/ft_count_if.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_count_if.c.o"
   "/Users/jslave/FDF/libft/srcs/ft_foreach.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_foreach.c.o"
@@ -70,6 +71,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jslave/FDF/libft/srcs/ft_toupper.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/ft_toupper.c.o"
   "/Users/jslave/FDF/libft/srcs/get_next_line.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/libft/srcs/get_next_line.c.o"
   "/Users/jslave/FDF/main.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/main.c.o"
+  "/Users/jslave/FDF/minilib/keys.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/minilib/keys.c.o"
+  "/Users/jslave/FDF/minilib/transform.c" "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/fdf.dir/minilib/transform.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

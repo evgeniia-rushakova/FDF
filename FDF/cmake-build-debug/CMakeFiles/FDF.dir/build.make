@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -915,6 +915,45 @@ CMakeFiles/fdf.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/main.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jslave/FDF/main.c -o CMakeFiles/fdf.dir/main.c.s
 
+CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o: ../libft/srcs/ft_atoi_base.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o   -c /Users/jslave/FDF/libft/srcs/ft_atoi_base.c
+
+CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jslave/FDF/libft/srcs/ft_atoi_base.c > CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.i
+
+CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jslave/FDF/libft/srcs/ft_atoi_base.c -o CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.s
+
+CMakeFiles/fdf.dir/minilib/keys.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/minilib/keys.c.o: ../minilib/keys.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/fdf.dir/minilib/keys.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/minilib/keys.c.o   -c /Users/jslave/FDF/minilib/keys.c
+
+CMakeFiles/fdf.dir/minilib/keys.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/minilib/keys.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jslave/FDF/minilib/keys.c > CMakeFiles/fdf.dir/minilib/keys.c.i
+
+CMakeFiles/fdf.dir/minilib/keys.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/minilib/keys.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jslave/FDF/minilib/keys.c -o CMakeFiles/fdf.dir/minilib/keys.c.s
+
+CMakeFiles/fdf.dir/minilib/transform.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/minilib/transform.c.o: ../minilib/transform.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/fdf.dir/minilib/transform.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/minilib/transform.c.o   -c /Users/jslave/FDF/minilib/transform.c
+
+CMakeFiles/fdf.dir/minilib/transform.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/minilib/transform.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jslave/FDF/minilib/transform.c > CMakeFiles/fdf.dir/minilib/transform.c.i
+
+CMakeFiles/fdf.dir/minilib/transform.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/minilib/transform.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jslave/FDF/minilib/transform.c -o CMakeFiles/fdf.dir/minilib/transform.c.s
+
 # Object files for target fdf
 fdf_OBJECTS = \
 "CMakeFiles/fdf.dir/libft/srcs/ft_atoi.c.o" \
@@ -982,7 +1021,10 @@ fdf_OBJECTS = \
 "CMakeFiles/fdf.dir/libft/srcs/ft_tolower.c.o" \
 "CMakeFiles/fdf.dir/libft/srcs/ft_toupper.c.o" \
 "CMakeFiles/fdf.dir/libft/srcs/get_next_line.c.o" \
-"CMakeFiles/fdf.dir/main.c.o"
+"CMakeFiles/fdf.dir/main.c.o" \
+"CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o" \
+"CMakeFiles/fdf.dir/minilib/keys.c.o" \
+"CMakeFiles/fdf.dir/minilib/transform.c.o"
 
 # External object files for target fdf
 fdf_EXTERNAL_OBJECTS =
@@ -1053,9 +1095,12 @@ fdf: CMakeFiles/fdf.dir/libft/srcs/ft_tolower.c.o
 fdf: CMakeFiles/fdf.dir/libft/srcs/ft_toupper.c.o
 fdf: CMakeFiles/fdf.dir/libft/srcs/get_next_line.c.o
 fdf: CMakeFiles/fdf.dir/main.c.o
+fdf: CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o
+fdf: CMakeFiles/fdf.dir/minilib/keys.c.o
+fdf: CMakeFiles/fdf.dir/minilib/transform.c.o
 fdf: CMakeFiles/fdf.dir/build.make
 fdf: CMakeFiles/fdf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Linking C executable fdf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jslave/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Linking C executable fdf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fdf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

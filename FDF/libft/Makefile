@@ -27,7 +27,7 @@ SRC =	srcs/ft_bzero.c srcs/ft_memset.c srcs/ft_strcat.c srcs/ft_strcpy.c \
 		srcs/ft_strjoin.c srcs/ft_itoa.c srcs/ft_strtrim.c srcs/ft_strsplit.c \
 		srcs/ft_lstnew.c srcs/ft_lstdelone.c srcs/ft_lstdel.c srcs/ft_lstadd.c \
 		srcs/ft_lstiter.c srcs/ft_lstmap.c srcs/ft_lstdellast.c srcs/ft_lstpushelem.c \
-		srcs/ft_lstappendelem.c srcs/ft_count_if.c srcs/ft_strjoinfree.c srcs/get_next_line.c
+		srcs/ft_lstappendelem.c srcs/ft_count_if.c srcs/ft_strjoinfree.c srcs/get_next_line.c srcs/ft_atoi_base.c
 
 OUT = $(SRC:%.c=%.o)
 

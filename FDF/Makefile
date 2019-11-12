@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tollivan <tollivan@student.42.fr>          +#+  +:+       +#+         #
+#    By: jslave <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/16 17:41:03 by tollivan          #+#    #+#              #
-#    Updated: 2019/10/26 17:36:44 by tollivan         ###   ########.fr        #
+#    Created: 2019/11/12 21:32:49 by jslave            #+#    #+#              #
+#    Updated: 2019/11/12 21:32:54 by jslave           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = fdf
 
@@ -22,7 +23,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 FLAGS_GRAPHIC = -framework OpenGL -framework Appkit
 
-SRC = main.c
+SRC = main.c fdf.c keys.c utils.c transform.c bresenham.c draw_utils.c
 
 OUT = $(SRC:%.c=%.o)
 

@@ -93,5 +93,6 @@ t_list				*ft_lstappendelem(t_list *start, t_list *new);
 int					ft_count_if(char **tab, int (*f)(char *));
 char				*ft_strjoinfree(char *s1, char *s2);
 int                 get_next_line(int fd, char **line);
+int                 ft_atoi_base(const char *str, int base);
 
 #endif

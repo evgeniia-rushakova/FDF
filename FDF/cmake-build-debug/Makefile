@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jslave/FDF/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/181D1CE3-C20B-4AFF-B20B-7BF42D6CBCF1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -149,6 +149,33 @@ libft/srcs/ft_atoi.s: libft/srcs/ft_atoi.c.s
 libft/srcs/ft_atoi.c.s:
 	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/libft/srcs/ft_atoi.c.s
 .PHONY : libft/srcs/ft_atoi.c.s
+
+libft/srcs/ft_atoi_base.o: libft/srcs/ft_atoi_base.c.o
+
+.PHONY : libft/srcs/ft_atoi_base.o
+
+# target to build an object file
+libft/srcs/ft_atoi_base.c.o:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.o
+.PHONY : libft/srcs/ft_atoi_base.c.o
+
+libft/srcs/ft_atoi_base.i: libft/srcs/ft_atoi_base.c.i
+
+.PHONY : libft/srcs/ft_atoi_base.i
+
+# target to preprocess a source file
+libft/srcs/ft_atoi_base.c.i:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.i
+.PHONY : libft/srcs/ft_atoi_base.c.i
+
+libft/srcs/ft_atoi_base.s: libft/srcs/ft_atoi_base.c.s
+
+.PHONY : libft/srcs/ft_atoi_base.s
+
+# target to generate assembly for a file
+libft/srcs/ft_atoi_base.c.s:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/libft/srcs/ft_atoi_base.c.s
+.PHONY : libft/srcs/ft_atoi_base.c.s
 
 libft/srcs/ft_bzero.o: libft/srcs/ft_bzero.c.o
 
@@ -1905,6 +1932,60 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/main.c.s
 .PHONY : main.c.s
 
+minilib/keys.o: minilib/keys.c.o
+
+.PHONY : minilib/keys.o
+
+# target to build an object file
+minilib/keys.c.o:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/keys.c.o
+.PHONY : minilib/keys.c.o
+
+minilib/keys.i: minilib/keys.c.i
+
+.PHONY : minilib/keys.i
+
+# target to preprocess a source file
+minilib/keys.c.i:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/keys.c.i
+.PHONY : minilib/keys.c.i
+
+minilib/keys.s: minilib/keys.c.s
+
+.PHONY : minilib/keys.s
+
+# target to generate assembly for a file
+minilib/keys.c.s:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/keys.c.s
+.PHONY : minilib/keys.c.s
+
+minilib/transform.o: minilib/transform.c.o
+
+.PHONY : minilib/transform.o
+
+# target to build an object file
+minilib/transform.c.o:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/transform.c.o
+.PHONY : minilib/transform.c.o
+
+minilib/transform.i: minilib/transform.c.i
+
+.PHONY : minilib/transform.i
+
+# target to preprocess a source file
+minilib/transform.c.i:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/transform.c.i
+.PHONY : minilib/transform.c.i
+
+minilib/transform.s: minilib/transform.c.s
+
+.PHONY : minilib/transform.s
+
+# target to generate assembly for a file
+minilib/transform.c.s:
+	$(MAKE) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/minilib/transform.c.s
+.PHONY : minilib/transform.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1917,6 +1998,9 @@ help:
 	@echo "... libft/srcs/ft_atoi.o"
 	@echo "... libft/srcs/ft_atoi.i"
 	@echo "... libft/srcs/ft_atoi.s"
+	@echo "... libft/srcs/ft_atoi_base.o"
+	@echo "... libft/srcs/ft_atoi_base.i"
+	@echo "... libft/srcs/ft_atoi_base.s"
 	@echo "... libft/srcs/ft_bzero.o"
 	@echo "... libft/srcs/ft_bzero.i"
 	@echo "... libft/srcs/ft_bzero.s"
@@ -2112,6 +2196,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... minilib/keys.o"
+	@echo "... minilib/keys.i"
+	@echo "... minilib/keys.s"
+	@echo "... minilib/transform.o"
+	@echo "... minilib/transform.i"
+	@echo "... minilib/transform.s"
 .PHONY : help
 
 

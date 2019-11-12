@@ -73,7 +73,7 @@ add_executable(fdf
         libft/srcs/ft_tolower.c
         libft/srcs/ft_toupper.c
         libft/srcs/get_next_line.c
-        main.c)
+        main.c libft/srcs/ft_atoi_base.c minilib/keys.c minilib/transform.c)
         target_link_libraries(fdf
         "-framework AppKit"
         "-framework OpenGL"

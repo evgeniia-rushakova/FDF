@@ -93,6 +93,9 @@
 		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_atoi.c">
 			<Option target="fdf"/>
 		</Unit>
+		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_atoi_base.c">
+			<Option target="fdf"/>
+		</Unit>
 		<Unit filename="/Users/jslave/FDF/libft/srcs/ft_bzero.c">
 			<Option target="fdf"/>
 		</Unit>
@@ -286,6 +289,12 @@
 			<Option target="fdf"/>
 		</Unit>
 		<Unit filename="/Users/jslave/FDF/main.c">
+			<Option target="fdf"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/keys.c">
+			<Option target="fdf"/>
+		</Unit>
+		<Unit filename="/Users/jslave/FDF/minilib/transform.c">
 			<Option target="fdf"/>
 		</Unit>
 		<Unit filename="/Users/jslave/FDF/CMakeLists.txt">
