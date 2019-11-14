@@ -161,11 +161,11 @@ int         find_step(t_fdf *fdf)
         max_size_of_p= fdf->cols;
     else
         max_size_of_p = fdf->rows;
-    printf("max is: %d\n", max_size_of_p);
+   // printf("max is: %d\n", max_size_of_p);
     step = ceil((WIDTH/max_size_of_p/2));
     if(step == 0)
         step+=5;
-    printf("%i\n", step);
+  //  printf("%i\n", step);
     return (step);
 }
 
@@ -183,7 +183,7 @@ t_fdf		*read_file(char *s)
 	fdf->x_start = 0;
 	fdf->y_start = 0;
 	fdf->name = s;
-	fdf->dimension = 'n';
+	fdf->projection = 'n';
     fdf->mlx_ptr = mlx_init();
     fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIDTH, HEIGHT, "little_cat");
     fdf->img_ptr = mlx_new_image(fdf->mlx_ptr,WIDTH, HEIGHT);

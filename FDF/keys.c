@@ -14,13 +14,24 @@
 
 int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  нажатии клавиши еск.Возможно нужно переделать
 {
+    if(keycode == 124)//стрелка вправо
+    {
+        erase_img(fdf);
+        fdf->x_start+=10;
+        draw_all(fdf);
+    }
     if (keycode == 89)//num7
     {
         erase_img(fdf);
-        if (fdf->dimension == 'i')
-            fdf->dimension = 'n';
-        else if (fdf->dimension == 'n')
-            fdf->dimension = 'i';
+        if (fdf->projection == 'i')
+            fdf->projection = 'n';
+        else if (fdf->projection == 'n')
+        {
+            fdf->x_start = WIDTH/2 + (fdf->cols * fdf->step)/2 - fdf->rows *fdf->step/3;
+            fdf->y_start=HEIGHT/3;
+            fdf->projection = 'i';
+        }
+
         draw_all(fdf);
     }
     if(keycode == 53)//esc
@@ -85,5 +96,6 @@ int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  н
             fdf->step-=5;
         draw_all(fdf);
     }
+
     return (0);
 }

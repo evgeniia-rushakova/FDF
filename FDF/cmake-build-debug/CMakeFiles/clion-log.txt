@@ -1,4 +1,16 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/12F7D6A1-3F87-4310-AC2B-FC0AC879B5BF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/FDF
+/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F4DB942F-5F16-4C9D-9172-61D15DAF3B43/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/FDF
 -- Configuring done
--- Generating done
--- Build files have been written to: /Users/jslave/FDF/cmake-build-debug
+CMake Error at CMakeLists.txt:8 (add_executable):
+  Cannot find source file:
+
+    minilib/keys.c
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:8 (add_executable):
+  No SOURCES given to target: fdf
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

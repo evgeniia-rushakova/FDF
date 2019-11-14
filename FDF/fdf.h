@@ -39,16 +39,12 @@ typedef struct      s_bres
     int y_end;
     int z_start;
     int z_end;
-    int x;
-    int y;
     int dx;
     int dy;
     int dx1;
     int dy1;
     int px;
     int py;
-    int xe;
-    int ye;
 }                   t_bres;
 
 typedef struct		s_fdf
@@ -60,6 +56,7 @@ typedef struct		s_fdf
 	int				**map;
 	int				**color;
     char                dimension;
+    char                projection;
 	void			*win_ptr;
 	void			*mlx_ptr;
 	void			*img_ptr;
@@ -73,6 +70,7 @@ typedef struct		s_fdf
     double              x_rotate;
     double              y_rotate;
     double              z_rotate;
+    int color4;
 }					t_fdf;
 
 
@@ -96,6 +94,7 @@ void       draw_all(t_fdf *fdf);
 int         key_press(int keycode, t_fdf *fdf);
 int         find_step(t_fdf *fdf);
 void        change_points(int *x, int *y, int *z, t_fdf *fdf);
+int         print_map(t_fdf *lst);
 
 //
 void make_line(t_bres *data, t_fdf *fdf);

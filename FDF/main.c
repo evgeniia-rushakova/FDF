@@ -19,7 +19,6 @@
 #include <math.h>
 
 
-
 int		main(int ac, char **av)
 {
     t_fdf   *fdf;
@@ -32,8 +31,6 @@ int		main(int ac, char **av)
        if (!(fdf = read_file(av[1])))
            error_out();
     create_map(fdf);
-
-    //print_map(fdf);
     draw_all(fdf);
     mlx_hook(fdf->win_ptr,2, 0, key_press, fdf);//отлавливаем нажатие клавиш
     mlx_loop(fdf->mlx_ptr);
