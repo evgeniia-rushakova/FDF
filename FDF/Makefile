@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jslave <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 21:32:49 by jslave            #+#    #+#              #
-#    Updated: 2019/11/12 21:32:54 by jslave           ###   ########.fr        #
+#    Updated: 2019/11/13 14:13:51 by mgrass           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ LIBFT = libft
 
 INCLUDES = libft/includes
 
-MLX_LIB_INCLUDES = minilib
+MLX_LIB_INCLUDES = minilibx
 
-FLAGS =  -g
+FLAGS = -Wall -Wextra -Werror -g
 
 FLAGS_GRAPHIC = -framework OpenGL -framework Appkit
 
-SRC = main.c fdf.c keys.c utils.c transform.c bresenham.c draw_utils.c
+SRC = main.c fdf.c keys.c utils.c transform.c bresenham.c draw_utils.c color.c menu.c
 
 OUT = $(SRC:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 14:21:20 by mgrass            #+#    #+#             */
-/*   Updated: 2019/11/11 15:48:09 by mgrass           ###   ########.fr       */
+/*   Updated: 2019/11/15 16:36:08 by mgrass           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,7 @@
 void		error_out(void)
 {
     ft_putendl("error1");
-    exit(1);
-}
-
-void		error_out1(void)
-{
-	ft_putendl("error1");
-	exit(1);
-}
-void		error_out2(void)
-{
-    ft_putendl("error2");
+    ///freee mlx destroy
     exit(1);
 }
 
@@ -99,25 +89,18 @@ int			check_size(t_fdf *lst, char *line)
 	return (1);
 }
 
-void		get_color(char *tmp, t_fdf *lst, int x, int y)
+void		create_color_map(char *tmp, t_fdf *lst, int x, int y)
 {
 	char	**ptr;
 
-	lst->color = ft_memalloc(sizeof(int *) * lst->rows);
-	lst->color[y] = ft_memalloc(sizeof(int) * lst->cols);
 	ptr = ft_strsplit(tmp, ',');
-	// printf("split ptr0: %s\n", ptr[0]);
-	// printf("split ptr1: %s\n", ptr[1]);
 	if (ptr[1])
 	{
-		// printf("->z: %d\n", lst->z);
 		lst->color[y][x] = ft_atoi_base(ptr[1] + 2, 16);
-		// printf("->color: %d\n", lst->color[y][x]);
 		free(ptr[1]);
 	}
-	else
-		lst->color[y][x] = 0xffffff;
-	// printf("->color: %d\n", lst->color[y][x]);
+	else 
+		lst->color[y][x] = 1;
 	free(ptr[0]);
 	free(ptr);
 	// фри фри фри i want to break free
@@ -130,21 +113,26 @@ void		create_map(t_fdf *lst)
 	int		x;
 	int		y;
 
+	lst->z_max = 0;
+	lst->z_min = 0;
 	y = 0;
-
 	while ((get_next_line(lst->fd, &line)) == 1)
 	{
 		x = 0;
 		tmp = ft_strsplit(line, ' ');
 		lst->map[y] = ft_memalloc(sizeof(int) * lst->cols);
+		lst->color[y] = ft_memalloc(sizeof(int) * lst->cols);
 		// printf("-----\n");
 		while (tmp[x])
 		{
-			get_color(tmp[x], lst, x, y);
-			//if (ft_atoi(tmp[x]) > 0)
-                //lst->map[y][x] = ft_atoi(tmp[x]) + 60;
-			//else
-			    lst->map[y][x] = ft_atoi(tmp[x]);
+			create_color_map(tmp[x], lst, x, y);
+			lst->map[y][x] = ft_atoi(tmp[x]);
+			if (lst->map[y][x] > lst->z_max)
+                 lst->z_max = lst->map[y][x];
+            if (lst->map[y][x] < lst->z_min)
+                 lst->z_min = lst->map[y][x];
+			// create_color(lst, x, y, lst->map[y][x]);
+			create_color(lst, x, y);
 			free(tmp[x++]);
 		}
 		free(tmp);
@@ -152,22 +140,7 @@ void		create_map(t_fdf *lst)
 	}
 }
 
-int         find_step(t_fdf *fdf)
-{
-    int step;
-    int max_size_of_p;
 
-    if (fdf->cols >= fdf->rows)
-        max_size_of_p= fdf->cols;
-    else
-        max_size_of_p = fdf->rows;
-   // printf("max is: %d\n", max_size_of_p);
-    step = ceil((WIDTH/max_size_of_p/2));
-    if(step == 0)
-        step+=5;
-  //  printf("%i\n", step);
-    return (step);
-}
 
 t_fdf		*read_file(char *s)
 {
@@ -180,26 +153,28 @@ t_fdf		*read_file(char *s)
     fdf->cols = 0;
     fdf->rows = 0;
     fdf->step = 0;
-	fdf->x_start = 0;
-	fdf->y_start = 0;
 	fdf->name = s;
-	fdf->projection = 'n';
+	fdf->dimension = 'n';
+	fdf->x_offset = 0;
+	fdf->y_offset = 0;
     fdf->mlx_ptr = mlx_init();
     fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIDTH, HEIGHT, "little_cat");
     fdf->img_ptr = mlx_new_image(fdf->mlx_ptr,WIDTH, HEIGHT);
     fdf->img_data = (int *)mlx_get_data_addr(fdf->img_ptr, &(fdf->bpp), &(fdf->size_line), &(fdf->endian));
 	if ((fdf->fd = open(s, O_RDONLY)) < 0)
-		error_out1();
+		error_out();
 	while ((get_next_line(fdf->fd, &line)) == 1)
 	{
 		if (!(check_size(fdf, line)))
-			error_out2();
+			error_out();
 	}
-   fdf->step = find_step(fdf);
-
-	fdf->x_start = ((WIDTH  -  (fdf->cols * fdf->step))/2);
-	fdf->y_start =((HEIGHT  -  (fdf->rows * fdf->step))/2);
+	fdf->resize = 1;
+	fdf->step = 5;
+	fdf->x_start = ((WIDTH  -  (fdf->cols * fdf->step*fdf->resize))/2);
+    fdf->y_start = ((HEIGHT  -  (fdf->rows * fdf->step*fdf->resize))/2);
 	fdf->map = ft_memalloc(sizeof(int *) * fdf->rows);
+	fdf->color = ft_memalloc(sizeof(int *) * fdf->rows);
+	fdf->z_coeff = 0;
 	close(fdf->fd);
 	fdf->fd = open(fdf->name, O_RDONLY);
 	return (fdf);

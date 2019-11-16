@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:13:28 by jslave            #+#    #+#             */
-/*   Updated: 2019/11/05 18:13:32 by jslave           ###   ########.fr       */
+/*   Updated: 2019/11/15 16:39:16 by mgrass           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilib/mlx.h"
-
-#include "libft/includes/libft.h"//поправить или минус 42
 #include "fdf.h"
-
-#include <stdio.h>
-#include <math.h>
-
 
 int		main(int ac, char **av)
 {
@@ -31,10 +24,15 @@ int		main(int ac, char **av)
        if (!(fdf = read_file(av[1])))
            error_out();
     create_map(fdf);
+
+    // print_map(fdf);
+    // print_color_map(fdf);
+    
     draw_all(fdf);
     mlx_hook(fdf->win_ptr,2, 0, key_press, fdf);//отлавливаем нажатие клавиш
+    // print_menu(fdf);
     mlx_loop(fdf->mlx_ptr);
+    // почистить фдф и массив
 
-    //почистить фдф и массив
     return (0);
 }

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham.c                                        :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 21:38:33 by jslave            #+#    #+#             */
-/*   Updated: 2019/11/12 21:38:37 by jslave           ###   ########.fr       */
+/*   Updated: 2019/11/15 16:34:04 by mgrass           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-typedef struct s_start
-{
-    int x;
-    int y;
-}               t_start;
-
-t_bres     *create_bresenham_data(char type, int x_st, int y_st, t_fdf *fdf)
+t_bres     *create_offset_data(char type, int x_st, int y_st, t_fdf *fdf)
 {
     t_bres *data;
 
@@ -31,11 +25,14 @@ t_bres     *create_bresenham_data(char type, int x_st, int y_st, t_fdf *fdf)
     data->x_end = x_st;
     data->y_end = y_st;
     if (type =='x')
-        data->x_end+=fdf->step;
-    if (type == 'y')
-        data->y_end+=fdf->step;
+        data->x_end+=fdf->step*fdf->resize;
+    else if (type == 'y')
+        data->y_end+=fdf->step*fdf->resize;
+    data->color_st = 0;
+	data->color_end = 0;
     return (data);
 }
+
 
 void       draw_all(t_fdf *fdf)//закинуть столбцы и строки
 {
@@ -44,7 +41,7 @@ void       draw_all(t_fdf *fdf)//закинуть столбцы и строки
     int x;
     int y;
     t_bres *data;
-
+    
     y = 0;
     while (y < fdf->rows)//y <= cols
     {
@@ -53,24 +50,29 @@ void       draw_all(t_fdf *fdf)//закинуть столбцы и строки
         {
             if (x + 1 < fdf->cols)
             {
-                data = create_bresenham_data('x',x_start, y_start, fdf);
-                data->z_start = (fdf->map[y][x]) * fdf->step;
-                data->z_end = (fdf->map[y][x + 1]) * fdf->step;
+                data = create_offset_data('x',x_start, y_start,fdf);
+                data->z_start = (fdf->map[y][x]) * fdf->step*fdf->resize;
+                data->z_end = (fdf->map[y][x + 1]) * fdf->step*fdf->resize;
+				data->color_st = fdf->color[y][x];
+				data->color_end = fdf->color[y][x + 1];
                 make_line(data, fdf);
             }
             if (y + 1 < fdf->rows)
             {
-                data = create_bresenham_data('y',x_start,y_start, fdf);
-                data->z_start = fdf->map[y][x] * fdf->step;
-                data->z_end = fdf->map[y + 1][x] * fdf->step;
+                data = create_offset_data('y',x_start, y_start,fdf);
+                data->z_start = fdf->map[y][x] * fdf->step*fdf->resize;
+                data->z_end = fdf->map[y + 1][x] * fdf->step*fdf->resize;
+				data->color_st = fdf->color[y][x];
+				data->color_end = fdf->color[y + 1][x];
                 make_line(data, fdf);
             }
-            x_start+=fdf->step;
+            x_start+=fdf->step*fdf->resize;
             x++;
         }
         x_start = fdf->x_start;
-        y_start+=fdf->step;
+        y_start+=fdf->step*fdf->resize;
         y++;
     }
     mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr,0,0);
+    print_menu(fdf);
 }

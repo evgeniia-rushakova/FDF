@@ -3,99 +3,130 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 21:26:26 by jslave            #+#    #+#             */
-/*   Updated: 2019/11/12 21:26:38 by jslave           ###   ########.fr       */
+/*   Updated: 2019/11/13 18:34:56 by mgrass           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int key_press(int keycode, t_fdf *fdf)//закрывает окошко пр  нажатии клавиши еск.Возможно нужно переделать
+void    check_rotates(int keycode, t_fdf *fdf)
 {
-    if(keycode == 124)//стрелка вправо
-    {
-        erase_img(fdf);
-        fdf->x_start+=10;
-        draw_all(fdf);
-    }
-    if (keycode == 89)//num7
-    {
-        erase_img(fdf);
-        if (fdf->projection == 'i')
-            fdf->projection = 'n';
-        else if (fdf->projection == 'n')
-        {
-            fdf->x_start = WIDTH/2 + (fdf->cols * fdf->step)/2 - fdf->rows *fdf->step/3;
-            fdf->y_start=HEIGHT/3;
-            fdf->projection = 'i';
-        }
-
-        draw_all(fdf);
-    }
-    if(keycode == 53)//esc
-    {
-        exit(0);
-    }
-    if(keycode == 124)//стрелка вправо
-    {
-        erase_img(fdf);
-        fdf->x_start+=10;
-        draw_all(fdf);
-    }
-    if(keycode == 126)//стрелка вниз
-    {
-        erase_img(fdf);
-        fdf->y_start+=10;
-        draw_all(fdf);
-    }
-    if(keycode == 123)//стрелка влево
-    {
-        erase_img(fdf);
-        fdf->x_start-=10;
-        draw_all(fdf);
-    }
-    if(keycode == 125)//стрелка вверх
-    {
-        erase_img(fdf);
-        fdf->y_start-=10;
-        draw_all(fdf);
-    }
+    erase_img(fdf);
     if (keycode == 88)//num6  для поворота по Х
     {
-        erase_img(fdf);
+        fdf->x_rotate += (0.1);
         fdf->dimension = 'x';
-        draw_all(fdf);
-        fdf->dimension = 'i';
     }
-    if (keycode == 91)//num2  для поворота по У
+    if (keycode == 86)//num4  для поворота по Х
     {
-        erase_img(fdf);
+        fdf->x_rotate -= (0.1);
+        fdf->dimension = 'x';
+    }
+    if (keycode == 91)//num8  для поворота по У
+    {
+        fdf->y_rotate+=(0.1);
+       fdf->dimension = 'y';
+    }
+    if (keycode == 84)//num8  для поворота по У
+    {
+        fdf->y_rotate-=(0.1);
         fdf->dimension = 'y';
-        draw_all(fdf);
-        fdf->dimension = 'i';
     }
-    if (keycode == 87)//num5  для поворота по Z
+    if (keycode == 83)//num1  для поворота по Z
     {
-        erase_img(fdf);
-        fdf->dimension = 'z';
-        draw_all(fdf);
-        fdf->dimension = 'i';
+        fdf->z_rotate+=0.1;
+       fdf->dimension = 'z';
     }
-    if (keycode == 69)//num+
+    if (keycode == 85)//num3  для поворота по Z
     {
-        erase_img(fdf);
-        fdf->step+=5;
-        draw_all(fdf);
+        fdf->z_rotate+=0.1;
+      fdf->dimension = 'z';
     }
-    if (keycode == 78)//num-
-    {
-        erase_img(fdf);
-        if (fdf->step -=5 != 0)
-            fdf->step-=5;
-        draw_all(fdf);
-    }
+    draw_all(fdf);
+}
 
+void    check_projection(int keycode, t_fdf *fdf)
+{
+    erase_img(fdf);
+    if (keycode == 87)//num5
+    {
+        if (fdf->projection == 'i')
+        {
+            fdf->projection = 'n';
+            fdf->x_rotate = 0;
+            fdf->y_rotate = 0;
+        }
+        else if (fdf->projection != 'i')
+        {
+         fdf->x_rotate = 0;
+         fdf->y_rotate = 0;
+         fdf->projection = 'i';
+        }
+    }
+    draw_all(fdf);
+}
+
+void    check_change_size(int keycode, t_fdf *fdf)
+{
+    erase_img(fdf);
+    if (keycode == 69)//num+
+        fdf->resize+=1;
+    if (keycode == 78 && fdf->resize -1 >=1)//num-
+        fdf->resize-=1;
+   if(keycode == 89 )//num7
+       fdf->z_coeff-=1;
+   if(keycode == 92)//num9
+       fdf->z_coeff+=1;
+    draw_all(fdf);
+}
+
+void    check_offset(int keycode, t_fdf *fdf)
+{
+    erase_img(fdf);
+    if(keycode == 124)//стрелка вправо
+        fdf->x_offset+=7;
+    if(keycode == 125)//стрелка вниз
+        fdf->y_offset+=7;
+    if(keycode == 123)//стрелка влево
+        fdf->x_offset-=7;
+    if(keycode == 126)//стрелка вверх
+        fdf->y_offset-=7;
+    draw_all(fdf);
+}
+
+void    check_restore(int keycode, t_fdf *fdf)
+{
+    erase_img(fdf);
+    if (keycode == 67)
+    {
+        fdf->x_offset = 0;
+        fdf->y_offset = 0;
+        fdf->x_rotate = 0;
+        fdf->y_rotate = 0;
+        fdf->z_rotate = 0;
+        fdf->z_coeff = 0;
+        fdf->resize = 1;
+        fdf->step = 10;///DEL
+       fdf->x_start = ((WIDTH  -  (fdf->cols * fdf->step))/2);
+       fdf->y_start =((HEIGHT  -  (fdf->rows * fdf->step))/2);
+    }
+    draw_all(fdf);
+}
+
+int     key_press(int keycode, t_fdf *fdf)
+{
+    if(keycode == 53)//esc
+    {
+        ft_memdel(&fdf);
+        exit(0);
+    }
+    check_offset(keycode,fdf);
+    check_projection(keycode, fdf);
+    check_rotates(keycode, fdf);
+    check_change_size(keycode, fdf);
+  check_restore(keycode, fdf);
     return (0);
 }

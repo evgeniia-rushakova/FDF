@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgrass <mgrass@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 21:28:58 by jslave            #+#    #+#             */
-/*   Updated: 2019/11/12 21:29:03 by jslave           ###   ########.fr       */
+/*   Updated: 2019/11/15 16:43:25 by mgrass           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-int        print_map(t_fdf *lst)
+void        print_map(t_fdf *lst)
 {
     int        x;
     int        y;
@@ -26,9 +25,9 @@ int        print_map(t_fdf *lst)
         printf("\n");
         y++;
     }
-    return (0);
 }
-int        print_color(t_fdf *lst)
+
+void        print_color_map(t_fdf *lst)
 {
     int        x;
     int        y;
@@ -41,9 +40,7 @@ int        print_color(t_fdf *lst)
         printf("\n");
         y++;
     }
-    return (0);
 }
-
 
 void  erase_img(t_fdf *fdf)
 {
@@ -57,6 +54,3 @@ void  erase_img(t_fdf *fdf)
     }
     mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr, 0, 0);
 }
-
-
-
