@@ -56,12 +56,12 @@ void iso(int *x, int *y, int *z, t_fdf *fdf)
     *x+=WIDTH/2;
 }
 
-
-
 void    change_points(int *x, int *y, int *z, t_fdf *fdf)
 {
-    if (*z > 0 || *z < 0)
+    if (fdf->z_coeff != 0 && *z !=0)
+    {
         *z += fdf->z_coeff;
+    }
     if (fdf->dimension == 'x')
         x_rotate(y, z, fdf);
     else if (fdf->dimension == 'y')

@@ -77,9 +77,9 @@ void    check_change_size(int keycode, t_fdf *fdf)
     if (keycode == 78 && fdf->resize -1 >=1)//num-
         fdf->resize-=1;
    if(keycode == 89 )//num7
-       fdf->z_coeff-=1;
+       fdf->z_coeff-=2;
    if(keycode == 92)//num9
-       fdf->z_coeff+=1;
+       fdf->z_coeff+=2;
     draw_all(fdf);
 }
 
@@ -87,13 +87,14 @@ void    check_offset(int keycode, t_fdf *fdf)
 {
     erase_img(fdf);
     if(keycode == 124)//стрелка вправо
-        fdf->x_offset+=7;
+        fdf->x_offset+=(fdf->cols/10);
     if(keycode == 125)//стрелка вниз
-        fdf->y_offset+=7;
-    if(keycode == 123)//стрелка влево
-        fdf->x_offset-=7;
+        fdf->y_offset+=(fdf->rows/10);
+    if(keycode == 123)
+        fdf->x_offset-=(fdf->cols/10);
+    //стрелка влево
     if(keycode == 126)//стрелка вверх
-        fdf->y_offset-=7;
+        fdf->y_offset-=(fdf->rows/10);
     draw_all(fdf);
 }
 
@@ -120,7 +121,7 @@ int     key_press(int keycode, t_fdf *fdf)
 {
     if(keycode == 53)//esc
     {
-        ft_memdel(&fdf);
+        //ft_memdel(fdf);
         exit(0);
     }
     check_offset(keycode,fdf);
