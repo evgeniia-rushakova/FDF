@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+/*
 void        print_map(t_fdf *lst)
 {
     int        x;
@@ -41,7 +41,7 @@ void        print_color_map(t_fdf *lst)
         y++;
     }
 }
-
+*/
 void  erase_img(t_fdf *fdf)
 {
     int i;
@@ -53,4 +53,22 @@ void  erase_img(t_fdf *fdf)
         i++;
     }
     mlx_put_image_to_window(fdf->mlx_ptr,fdf->win_ptr,fdf->img_ptr, 0, 0);
+}
+
+void	arr_free(int **arr, int rows)
+{
+    int i;
+
+    i = 0;
+    while (i < rows)
+    {
+        free(arr[i]);
+        i++;
+    }
+}
+
+void        free_fdf(t_fdf *fdf)
+{
+    arr_free(fdf->map, fdf->rows);
+    arr_free(fdf->color, fdf->rows);
 }

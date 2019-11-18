@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+void    draw(int x, int y, t_bres *data, t_fdf *fdf)
+{
+    if (x > MENU_WIDTH && x < WIDTH && y > 0 && y < HEIGHT)
+        fdf->img_data[y * WIDTH + x] = get_color(x, y, data);
+}
+
 void    draw_dy(t_bres *data, t_fdf *fdf)
 {
     int x;
@@ -27,8 +33,7 @@ void    draw_dy(t_bres *data, t_fdf *fdf)
         y = data->y_start;
         ye = data->y_end;
     }
-    if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
-        fdf->img_data[y * WIDTH + x] = get_color(x, y, data);
+    draw(x, y, data, fdf);
     while (++y < ye)
     {
         if (data->py <= 0)
@@ -38,8 +43,7 @@ void    draw_dy(t_bres *data, t_fdf *fdf)
             ((data->dx < 0 && data->dy < 0) || (data->dx > 0 && data->dy > 0)) ?  (x++) : (x--);
             data->py = data->py + 2 * (data->dx1 - data->dy1);
         }
-        if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
-            fdf->img_data[y * WIDTH + x] = get_color(x, y, data);
+        draw(x, y, data, fdf);
     }
 }
 
@@ -58,8 +62,7 @@ void    draw_dx(t_bres *data, t_fdf *fdf)
         y = data->y_start;
         xe = data->x_end;
     }
-    if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
-        fdf->img_data[y * WIDTH + x] = get_color(x, y, data);
+    draw(x, y, data, fdf);
     while (++x < xe)
     {
         if (data->px <= 0)
@@ -69,8 +72,7 @@ void    draw_dx(t_bres *data, t_fdf *fdf)
             ((data->dx < 0 && data->dy < 0) || (data->dx > 0 && data->dy > 0)) ? (y ++) : (y --);
             data->px = data->px + 2 * (data->dy1 - data->dx1);
         }
-        if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
-            fdf->img_data[y * WIDTH + x] = get_color(x, y, data);
+        draw(x, y, data, fdf);
     }
 }
 

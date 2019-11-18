@@ -22,8 +22,9 @@ void	print_menu(t_fdf *lst)
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Y_offset:  Up/Down");
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Rotate X : Num6/Num4");
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Rotate Y : Num8/Num2");
-    mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Rotate Z : Num1/Num3");
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Resize: Num+/Num-");
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Z-change: Num7/Num9");
+    mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Change colour: Num0");
     mlx_string_put(lst->mlx_ptr, lst->win_ptr, 20, y += 20, 0xffffff, "Restore All: Num*");
+
 }

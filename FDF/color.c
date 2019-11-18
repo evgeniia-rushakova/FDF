@@ -63,3 +63,46 @@ void    create_color(t_fdf *lst, int x, int y)
 	else if (lst->color[y][x] == 1 && n >= 100 && n < 500)
         lst->color[y][x] = 0x8fbc8f;
 }
+
+void        draw_background(t_fdf *fdf)
+{
+    int    i;
+    i = 0;
+    while (i < HEIGHT * WIDTH)
+    {
+        if (i % WIDTH < MENU_WIDTH)
+            (fdf->img_data)[i] = 0x272727;
+        else
+            (fdf->img_data)[i] = 0x323232; // E5E5E5
+        i++;
+    }
+}
+
+void    change_color(t_fdf *fdf)
+{
+    int *palette;
+    static int count = 0;
+    int x;
+    int y;
+
+    palette = (int[22]){0x20b2aa ,0x98fb98,0x98fb98,0xff7f,0xff7f,0x7cfc00,
+                        0x7cfc00,0xff00,0x7fff00,0xfa9a,0xfa9a,0xadff2f,
+                        0xadff2f,0x32cd32,0x32cd32,0x9acd32,0x9acd32,0x228b22,
+                        0x228b22,0x6b8e23,0x6b8e23,0xbdb76b};
+    erase_img(fdf);
+    y = 0;
+    while (y < fdf->rows)
+    {
+        x = -1;
+        while (x++ < fdf->cols)
+        {
+            fdf->color[y][x] = palette[count];
+        }
+        y++;
+    }
+    if (count == 21)
+        count = -1;
+    count++;
+    draw_all(fdf);
+}
+

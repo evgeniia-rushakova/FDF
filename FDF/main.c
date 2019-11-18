@@ -25,16 +25,15 @@ int		main(int ac, char **av)
            error_out();
     create_map(fdf);
 
-    // print_map(fdf);
+  // print_map(fdf);
+   // printf("\n");
     // print_color_map(fdf);
     
-    draw_all(fdf);
+   draw_all(fdf);
     mlx_hook(fdf->win_ptr,2, 0, key_press, fdf);//отлавливаем нажатие клавиш
     // print_menu(fdf);
-    printf("cols: %i\n", fdf->cols);
-    printf("rows: %i\n", fdf->cols);
     mlx_loop(fdf->mlx_ptr);
     // почистить фдф и массив
-
+//free(fdf);
     return (0);
 }

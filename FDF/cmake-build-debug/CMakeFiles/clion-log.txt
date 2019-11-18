@@ -1,7 +1,16 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/FDF
-CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
-  CMake 3.15 or higher is required.  You are running version 3.14.5
+/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/90AD691F-B5AF-496D-B3E9-144F777C9412/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/FDF
+-- Configuring done
+CMake Error at CMakeLists.txt:8 (add_executable):
+  Cannot find source file:
+
+    minilib/keys.c
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
 
 
--- Configuring incomplete, errors occurred!
-See also "/Users/jslave/FDF/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+CMake Error at CMakeLists.txt:8 (add_executable):
+  No SOURCES given to target: fdf
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

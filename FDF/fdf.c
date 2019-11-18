@@ -15,7 +15,6 @@
 void		error_out(void)
 {
     ft_putendl("error1");
-    ///freee mlx destroy
     exit(1);
 }
 
@@ -136,6 +135,7 @@ void		create_map(t_fdf *lst)
 			free(tmp[x++]);
 		}
 		free(tmp);
+		free(line);
 		y++;
 	}
 }
@@ -169,8 +169,8 @@ t_fdf		*read_file(char *s)
 			error_out();
 	}
 	fdf->resize = 1;
-	fdf->step = 5;
-	fdf->x_start = ((WIDTH  -  (fdf->cols * fdf->step*fdf->resize))/2);
+	fdf->step = 20;
+	fdf->x_start = ((WIDTH  -  (fdf->cols * fdf->step*fdf->resize) + MENU_WIDTH)/2) ;
     fdf->y_start = ((HEIGHT  -  (fdf->rows * fdf->step*fdf->resize))/2);
 	fdf->map = ft_memalloc(sizeof(int *) * fdf->rows);
 	fdf->color = ft_memalloc(sizeof(int *) * fdf->rows);
